@@ -8,6 +8,9 @@
 ./cmd/lotto_simulator 
 ```
 
+## Required
+> go 1.18 >=
+
 ## License
 Copyright (c) 2022 jiny0x01(sdk159147@gmail.com)
 MIT License
