@@ -10,10 +10,10 @@ import (
 
 type ComputerLottoNumber struct {
 	Numbers []int
-	Bonus int		
+	Bonus   int
 }
 
-func NewGame() []int{
+func NewGame() []int {
 	fmt.Println("1~45중에 숫자 6개를 중복되지 않도록 뽑으세요.")
 	numbers := []int{}
 
@@ -39,10 +39,10 @@ func NewGame() []int{
 
 func GenerateRandomLottoNumberForUser() []int {
 	fmt.Println("자동 로또 번호 생성중 . . .")
-	var newLottoNumber []int 
+	var newLottoNumber []int
 	for len(newLottoNumber) < 6 {
 		// 1 <= num <= 45
-		num := rand.Intn(45)+1
+		num := rand.Intn(45) + 1
 		if lotto_util.Contain(newLottoNumber, num) {
 			continue
 		}
@@ -59,7 +59,7 @@ func GenerateRandomLottoNumberForComputer() ComputerLottoNumber {
 	var newLottoNumber ComputerLottoNumber
 	for len(newLottoNumber.Numbers) < 6 {
 		// 1 <= num <= 45
-		num := rand.Intn(45)+1
+		num := rand.Intn(45) + 1
 		if lotto_util.Contain(newLottoNumber.Numbers, num) {
 			continue
 		}
@@ -68,7 +68,7 @@ func GenerateRandomLottoNumberForComputer() ComputerLottoNumber {
 	sort.Ints(newLottoNumber.Numbers)
 	for {
 		// 1 <= num <= 45
-		num := rand.Intn(45)+1
+		num := rand.Intn(45) + 1
 		if lotto_util.Contain(newLottoNumber.Numbers, num) {
 			continue
 		}
@@ -88,7 +88,7 @@ func CompareLottoNumber(userLotto []int, computerLotto *ComputerLottoNumber) int
 	same := 0
 	for _, num := range userLotto {
 		if lotto_util.Contain(computerLotto.Numbers, num) {
-			same++	
+			same++
 		}
 	}
 	if same == 6 {
@@ -98,7 +98,7 @@ func CompareLottoNumber(userLotto []int, computerLotto *ComputerLottoNumber) int
 		return 2
 	}
 	if same <= 2 { //낙첨
-		return 0 
+		return 0
 	}
-	return 8-same // 3~5등
+	return 8 - same // 3~5등
 }
